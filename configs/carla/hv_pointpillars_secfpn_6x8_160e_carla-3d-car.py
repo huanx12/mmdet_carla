@@ -42,7 +42,7 @@ data_root = "data/carla/c16h35_numsensor1"
 class_names = ["Car"]
 db_sampler = dict(
     data_root=data_root,
-    info_path=data_root + "carla_dbinfos_train.pkl",
+    info_path=data_root + "/carla_dbinfos_train.pkl",
     rate=1.0,
     prepare=dict(filter_by_difficulty=[-1], filter_by_min_points=dict(Car=5)),
     sample_groups=dict(Car=15),
@@ -97,7 +97,7 @@ test_pipeline = [
     dict(
         type="LoadPointsFromFile",
         coord_type="LIDAR",
-        load_dim=4,fcos3d
+        load_dim=4,
         use_dim=4,
     ),
     dict(
