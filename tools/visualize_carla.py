@@ -13,18 +13,18 @@ def main():
     parser.add_argument("--no-pred", action="store_true")
     args = parser.parse_args()
 
-    with open("data/carla/carla_infos_val.pkl", "rb") as f:
+    with open("data/carla/c16h35_numsensor1/carla_infos_val.pkl", "rb") as f:
         data_infos = pickle.load(f)
 
     data_info = data_infos[args.id]
 
     scene_id = data_info["scene_id"]
 
-    points = np.fromfile(f"data/carla/velodyne/{scene_id}", dtype=np.float32)
+    points = np.fromfile(f"data/carla/c16h35_numsensor1/velodyne/{scene_id}", dtype=np.float32)
     points = points.reshape(-1, 4)
 
     src_indices = np.fromfile(
-        f"data/carla/velodyne_src_indices/{scene_id}", dtype=np.int64
+        f"data/carla/c16h35_numsensor1/velodyne_src_indices/{scene_id}", dtype=np.int64
     )
 
     used_srcs = list(map(int, args.srcs.split(",")))
