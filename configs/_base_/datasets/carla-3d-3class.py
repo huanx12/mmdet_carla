@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = "CarlaDataset"
-data_root = "data/carla/c16h35_numsensor1"
+data_root = "data/carla/ped_test_prepared"
 class_names = ['Pedestrian', 'Cyclist', 'Car']
 point_cloud_range = [-102, -60, -0.1, 2, 60, 3.9]
 input_modality = dict(use_lidar=True, use_camera=False)

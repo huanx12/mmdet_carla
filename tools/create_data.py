@@ -207,8 +207,11 @@ def carla_data_prep(root_path, out_dir, workers, fusion_type):
         out_dir (str): Output directory of the generated info file.
         workers (int): Number of threads to be used.
     """
-    from tools.data_converter import carla_converter as carla
-    from tools.data_converter import carla_data_utils as carla_utils
+    # from tools.data_converter import carla_converter as carla
+    # from tools.data_converter import carla_data_utils as carla_utils
+
+    from tools.data_converter import carla_converter_3class as carla
+    from tools.data_converter import carla_data_utils_3class as carla_utils
 
     root_path, out_dir = Path(root_path), Path(out_dir)
 

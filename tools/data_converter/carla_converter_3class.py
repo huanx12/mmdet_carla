@@ -10,7 +10,7 @@ import mmcv
 import open3d as o3d
 from scipy.spatial.transform import Rotation as R
 
-from .carla_data_utils import DataInfo
+from .carla_data_utils_3class import DataInfo
 
 
 class CarlaConverter:
@@ -110,7 +110,7 @@ class CarlaConverter:
             gt_bboxes_3d.append(bbox)
             gt_names.append("Pedestrian")
             difficulty.append(0)
-            srcs.append(pedestrain.srcs)
+            srcs.append(pedestrian.srcs)
 
         for cyclist in raw_data_info.cyclists:
             bbox = cyclist.get_bbox()
@@ -118,7 +118,7 @@ class CarlaConverter:
             gt_bboxes_3d.append(bbox)
             gt_names.append("Cyclist")
             difficulty.append(0)
-            srcs.append(pedestrain.srcs)
+            srcs.append(cyclist.srcs)
 
         data_info = {
             "scene_id": raw_data_info.scene_id,

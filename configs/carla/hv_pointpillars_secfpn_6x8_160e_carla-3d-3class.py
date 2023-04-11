@@ -38,7 +38,7 @@ model = dict(
 
 # dataset settings
 dataset_type = "CarlaDataset"
-data_root = "data/carla/c16h35_numsensor1"
+data_root = "data/carla/ped_test_prepared"
 class_names = ['Pedestrian', 'Cyclist', 'Car']
 db_sampler = dict(
     data_root=data_root,
