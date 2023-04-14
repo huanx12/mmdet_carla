@@ -48,7 +48,7 @@ class CarlaDataset(KittiDataset):
             Default: [-85, -85, -5, 85, 85, 5].
     """
 
-    CLASSES = ("Car",)
+    CLASSES = ('car', 'pedestrian', 'cyclist')
 
     def __init__(
         self,
@@ -215,6 +215,12 @@ class CarlaDataset(KittiDataset):
             scene_id = info["scene_id"]
             # image_shape = info["image_shape"][:2]
             box_dict = self.convert_valid_bboxes(pred_dicts, info)
+            # Filter box_dict based on predicted class label
+            # class_mask = pred_dicts[0]["label_3d"] == class_names.index(class_name)
+            # box_dict_filtered = {k: v[class_mask] for k, v in pred_dicts[0].items()}
+            # box_dict = self.convert_valid_bboxes(box_dict_filtered, info)
+
+
             anno = {
                 "name": [],
                 "truncated": [],
@@ -238,7 +244,8 @@ class CarlaDataset(KittiDataset):
                 ):
                     # bbox[2:] = np.minimum(bbox[2:], image_shape[::-1])
                     # bbox[:2] = np.maximum(bbox[:2], [0, 0])
-                    anno["name"].append(class_names[int(label)])
+                    # anno["name"].append(class_names[int(label)])
+                    anno["name"].append(self.CLASSES[int(label)])
                     anno["truncated"].append(0.0)
                     anno["occluded"].append(0)
                     anno["alpha"].append(

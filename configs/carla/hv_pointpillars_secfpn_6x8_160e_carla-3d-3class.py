@@ -93,7 +93,7 @@ train_pipeline = [
     dict(
         type="Collect3D",
         keys=["points", "gt_bboxes_3d", "gt_labels_3d"],
-    ),
+    )
 ]
 test_pipeline = [
     dict(
@@ -130,8 +130,8 @@ test_pipeline = [
 ]
 
 data = dict(
-    samples_per_gpu=6,
-    workers_per_gpu=4,
+    samples_per_gpu=1,
+    workers_per_gpu=8,
     train=dict(
         type="RepeatDataset",
         times=2,
@@ -145,7 +145,7 @@ data = dict(
 lr = 0.0001  # max learning rate
 optimizer = dict(lr=lr, betas=(0.95, 0.85))
 # runtime settings
-runner = dict(type="EpochBasedRunner", max_epochs=10)
+runner = dict(type="EpochBasedRunner", max_epochs=2)
 evaluation = dict(interval=1)
 
 # custom_hooks=[dict(type='EMAHook')]
