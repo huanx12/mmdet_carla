@@ -6,35 +6,35 @@ _base_ = [
 ]
 
 point_cloud_range = [-101.84, -59.52, -0.1, 1.84, 59.52, 3.9]
-model = dict(
-    bbox_head=dict(
-        type="Anchor3DHead",
-        num_classes=3,
-        anchor_generator=dict(
-            _delete_=True,
-            type="AlignedAnchor3DRangeGenerator",
-            ranges=[[-101.84, -59.52, 0.72, 1.84, 59.52, 0.72]],
-            sizes=[[3.9, 1.6, 1.56]],
-            rotations=[0, 1.57],
-            reshape_out=True,
-        )
-    ),
-    # model training and testing settings
-    train_cfg=dict(
-        _delete_=True,
-        assigner=dict(
-            type="MaxIoUAssigner",
-            iou_calculator=dict(type="BboxOverlapsNearest3D"),
-            pos_iou_thr=0.6,
-            neg_iou_thr=0.45,
-            min_pos_iou=0.45,
-            ignore_iof_thr=-1,
-        ),
-        allowed_border=0,
-        pos_weight=-1,
-        debug=False,
-    ),
-)
+# model = dict(
+#     bbox_head=dict(
+#         type="Anchor3DHead",
+#         num_classes=3,
+#         anchor_generator=dict(
+#             _delete_=True,
+#             type="AlignedAnchor3DRangeGenerator",
+#             ranges=[[-101.84, -59.52, 0.72, 1.84, 59.52, 0.72]],
+#             sizes=[[3.9, 1.6, 1.56]],
+#             rotations=[0, 1.57],
+#             reshape_out=True,
+#         )
+#     ),
+#     # model training and testing settings
+#     train_cfg=dict(
+#         _delete_=True,
+#         assigner=dict(
+#             type="MaxIoUAssigner",
+#             iou_calculator=dict(type="BboxOverlapsNearest3D"),
+#             pos_iou_thr=0.6,
+#             neg_iou_thr=0.45,
+#             min_pos_iou=0.45,
+#             ignore_iof_thr=-1,
+#         ),
+#         allowed_border=0,
+#         pos_weight=-1,
+#         debug=False,
+#     ),
+# )
 
 # dataset settings
 dataset_type = "CarlaDataset"
